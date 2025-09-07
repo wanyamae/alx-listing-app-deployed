@@ -25,8 +25,8 @@ export default function PropertyDetail({ property: initialProperty }: Props) {
       setLoading(true);
       setError(null);
       try {
-        const res = await axios.get(`/api/properties/${propertyId}`);
-        setProperty(res.data);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${propertyId}`);
+        setProperty(response.data);
       } catch (err) {
         console.error('Error fetching property:', err);
         setError('Failed to load property details.');
